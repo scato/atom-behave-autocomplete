@@ -101,12 +101,17 @@ describe("provider model", function() {
     });
 
     describe('step files', () => {
-      it('should pull in lines from step definitions', () => {
+      it('should pull in step definitions', () => {
         model.rootDirectory = () => process.cwd();
         atom.config.set("behave-autocomplete.path", `/spec/features`);
         const stepDefs = model.scanStepDefinitionsDir();
         expect(stepDefs.length).toBe(1);
-        stepDefs.forEach( stepDef => expect(stepDef.snippet).toEqual('a sample step file'));
+        stepDefs.forEach(stepDef => {
+          expect(stepDef.snippet).toEqual('a sample step file')
+          expect(stepDef.lineMatcher instanceof RegExp).toBe(true)
+          expect(stepDef.row).toBe(2)
+          expect(stepDef.column).toBe(0)
+        });
       });
     });
   });
