@@ -4,8 +4,8 @@ var model = require('../lib/provider');
 describe("provider model", function() {
   describe("featuresDirectory", function() {
     it("gets feature directory from configuration", function() {
-      atom.config.set("cucumber-autocomplete.path", "/some_path");
-      expect(model.featuresDirectory("cucumber-autocomplete.path")).toEqual("/some_path");
+      atom.config.set("behave-autocomplete.path", "/some_path");
+      expect(model.featuresDirectory("behave-autocomplete.path")).toEqual("/some_path");
     });
   });
 
@@ -103,7 +103,7 @@ describe("provider model", function() {
     describe('step files', () => {
       it('should pull in lines from step definitions', () => {
         model.rootDirectory = () => process.cwd();
-        atom.config.set("cucumber-autocomplete.path", `/spec/features`);
+        atom.config.set("behave-autocomplete.path", `/spec/features`);
         const stepDefs = model.scanStepDefinitionsDir();
         stepDefs.forEach( stepDef => expect(stepDef.snippet).toEqual('a sample step file'));
       });
