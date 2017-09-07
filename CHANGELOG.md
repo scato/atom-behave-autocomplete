@@ -1,3 +1,6 @@
+## 0.0.3 - Hyperclick provider
+* Added Hyperclick provider to jump to step definitions
+
 ## 0.0.2 - Switch to Behave
 * Modified search to look for Behave step definitions
 
