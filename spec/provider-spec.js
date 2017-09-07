@@ -77,6 +77,13 @@ describe("provider model", function() {
     });
   });
 
+  describe("generateLineMatchingRegex", function() {
+    it("performs a crude match", function () {
+      let step = "I should see the index page";
+      expect(model.generateLineMatchingRegex(step)).toEqual(/I should see the index page/);
+    });
+  });
+
   describe('file reading', () => {
     it('should read files directly from the directory provided', () => {
       const rootPath = process.cwd();
