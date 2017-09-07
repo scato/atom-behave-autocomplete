@@ -105,6 +105,7 @@ describe("provider model", function() {
         model.rootDirectory = () => process.cwd();
         atom.config.set("behave-autocomplete.path", `/spec/features`);
         const stepDefs = model.scanStepDefinitionsDir();
+        expect(stepDefs.length).toBe(1);
         stepDefs.forEach( stepDef => expect(stepDef.snippet).toEqual('a sample step file'));
       });
     });
