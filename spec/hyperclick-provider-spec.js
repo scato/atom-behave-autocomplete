@@ -9,12 +9,8 @@ describe("hyperclick provider model", function() {
   });
 
   it("only looks up steps", function () {
-    // "a sample step file"
-    expect(model._isValidScopeChain(".source.feature")).toBe(true);
-    // "Given"
-    expect(model._isValidScopeChain(".source.feature .support.class.gherkin")).toBe(true);
-    // "Scenario:"
-    expect(model._isValidScopeChain(".source.feature .keyword.gherkin")).toBe(false);
+    expect(model._containsStepDefinition("Feature: check this out")).toBe(false);
+    expect(model._containsStepDefinition("    Given a sample step file")).toBe(true);
   });
 
   it("highlights the entire line", function () {
