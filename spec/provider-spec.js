@@ -61,26 +61,31 @@ describe("provider model", function() {
       expect(model.replacedBehaveRegex(step)).toEqual("I should see the index page");
     });
 
-    it("replaces behave number variables with autocomplete variables", function() {
-      let step = "there are (\\d+) users";
-      expect(model.replacedBehaveRegex(step)).toEqual("there are ${1:numberArgument} users");
-    });
-
     it("replaces behave text variables with autocomplete variables", function() {
-      let step = "I select \"(.*?)\" in the admin panel"
+      let step = "I select \"{text}\" in the admin panel"
       expect(model.replacedBehaveRegex(step)).toEqual("I select \"${1:textArgument}\" in the admin panel");
     });
 
     it("replaces multiple behave text variables with autocomplete variables", function() {
-      let step = `(.*?)" can add text "(.*?)" for "(.*?)" hours and "(.*?)" minutes`
-      expect(model.replacedBehaveRegex(step)).toEqual("${1:textArgument}\" can add text \"${1:textArgument}\" for \"${1:textArgument}\" hours and \"${1:textArgument}\" minutes");
+      let step = `"{text1}" can add text "{text2}" for "{text3}" hours and "{text4}" minutes`
+      expect(model.replacedBehaveRegex(step)).toEqual("\"${1:textArgument}\" can add text \"${1:textArgument}\" for \"${1:textArgument}\" hours and \"${1:textArgument}\" minutes");
     });
   });
 
   describe("generateLineMatchingRegex", function() {
-    it("performs a crude match", function () {
+    it("doesn't replace anything if there aren't any behave variables", function() {
       let step = "I should see the index page";
       expect(model.generateLineMatchingRegex(step)).toEqual(/I should see the index page/);
+    });
+
+    it("replaces behave text variables with a wildcard match", function() {
+      let step = "I select \"{text}\" in the admin panel"
+      expect(model.generateLineMatchingRegex(step)).toEqual(/I select "(.*)" in the admin panel/);
+    });
+
+    it("replaces multiple behave text variables with wildcard matches", function() {
+      let step = `"{text1}" can add text "{text2}" for "{text3}" hours and "{text4}" minutes`
+      expect(model.generateLineMatchingRegex(step)).toEqual(/"(.*)" can add text "(.*)" for "(.*)" hours and "(.*)" minutes/);
     });
   });
 
