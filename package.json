@@ -1,7 +1,7 @@
 {
   "name": "behave-autocomplete",
   "main": "./lib/main",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Autocompletes based on your defined behave steps",
   "keywords": [],
   "repository": "https://github.com/scato/atom-behave-autocomplete",
