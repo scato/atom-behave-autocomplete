@@ -1,3 +1,8 @@
+## 0.0.4 - Bugfixes
+* Fix convertion from step definitions to suggestions and regexps
+* Fix highlighting bug
+* Fix subdirectory bug
+
 ## 0.0.3 - Hyperclick provider
 * Added Hyperclick provider to jump to step definitions
 

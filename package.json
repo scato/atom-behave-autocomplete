@@ -1,7 +1,7 @@
 {
   "name": "behave-autocomplete",
   "main": "./lib/main",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Autocompletes based on your defined behave steps",
   "keywords": [],
   "repository": "https://github.com/scato/atom-behave-autocomplete",
@@ -28,5 +28,10 @@
   "dependencies": {},
   "scripts": {
     "test": "apm test"
+  },
+  "apmInstallSource": {
+    "type": "git",
+    "source": "git@github.com:scato/atom-behave-autocomplete.git",
+    "sha": "4e730edcfc0de72024d5c5cc481cfea9cf3698e4"
   }
 }
